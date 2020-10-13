@@ -1,0 +1,27 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+  <servlet>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <!-- 4.2 找到前端控制器-->
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!--  4.3 每个框架都有自己的配置文件-->
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:springmvc.xml</param-value>
+    </init-param>
+    <!--4.4让前端控制器去读 正整数，值越小，优先级越高-->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <!-- 4.1  xxx.action 转给当前servlet-->
+    <url-pattern>*.action</url-pattern>
+  </servlet-mapping>
+
+
+</web-app>
