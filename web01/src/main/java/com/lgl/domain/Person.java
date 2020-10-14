@@ -40,6 +40,15 @@ public class Person {
         this.city = city;
     }
 
+    public Person(int id, String username, String password, String city, Birthday birthday, Date birthday2) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.city = city;
+        this.birthday = birthday;
+        this.birthday2 = birthday2;
+    }
+
     public int getId() {
         return id;
     }

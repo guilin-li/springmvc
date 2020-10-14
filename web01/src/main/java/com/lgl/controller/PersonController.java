@@ -38,5 +38,19 @@ public class PersonController {
         //3:在页面上进行forEach循环
         return mv;
     }
+    @RequestMapping("update.action")
+    public ModelAndView updatePerson(int id){//id=1
+        //1:模拟一下查询数据库
+        Person person= Db.findById(id);
+        //2:转发到页面
+        ModelAndView mv = new ModelAndView();//对数据与页面的封装
+        mv.addObject("person",person);
+        //WEB-INF/jsp/  前缀
+        //.jsp  后缀
+        mv.setViewName("updatePersonUI");// /WEB-INFO/jsp/list.jsp
+        //3:在页面上进行forEach循环
+        return mv;
+    }
+
 
 }
