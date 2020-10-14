@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+<!--进行包扫描,创建controller层的对象 只要是指定的包与子包下面有@Controller的类
+    都要被创建对象，且加入ioc容器中-->
+    <context:component-scan base-package="com.lgl.controller"/>
+    <!-- 这行配置可以替换掉上边的两行配置-->
+    <mvc:annotation-driven />
+
+    <!--配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--定义页面路径的前缀-->
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <!--定义页面路径的后缀-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <!--拦截器使用第二步:配置拦截器-->
+    <mvc:interceptors>
+        <!--用于测试的拦截器-->
+        <mvc:interceptor>
+            <!--拦截路径的配置-->
+            <mvc:mapping path="/**"/>
+            <bean id="interceptor1" class="com.lgl.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+
+    </mvc:interceptors>
+
+
+
+</beans>
