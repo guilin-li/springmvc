@@ -1,11 +1,34 @@
 package com.lgl.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 //1,定义实体类
 public class Person {
     private int id;
     private String username;
     private String password;
     private String city;
+    private  Birthday birthday;
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    private Date birthday2;
+
+    public Date getBirthday2() {
+        return birthday2;
+    }
+
+    public void setBirthday2(Date birthday2) {
+        this.birthday2 = birthday2;
+    }
+
+    public Birthday getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Birthday birthday) {
+        this.birthday = birthday;
+    }
 
     public Person() {
     }
